@@ -58,8 +58,6 @@ import java.io.InterruptedIOException
 import java.util.concurrent.TimeUnit
 import javax.net.ssl.SSLException
 
-private const val CVE_ID = "CVE-2026-111943"
-private const val CVE_URL = "https://www.cve.org/CVERecord?id=$CVE_ID"
 private const val INCIDENT_URL = "https://emudhra.we-have-a-problem.com/"
 
 private const val EMSIGN_ROOT = "emSign Root TLS CA - G3"
@@ -161,8 +159,7 @@ fun CertificateCheckScreen() {
             TopAppBar(
                 title = {
                     Column {
-                        Text("eMudhra Intermediate CA Compromise", style = MaterialTheme.typography.titleMedium)
-                        CveLink()
+                        Text("eMudhra Intermediate CA Compromise", style = MaterialTheme.typography.titleLarge)
                     }
                 }
             )
@@ -178,7 +175,7 @@ fun CertificateCheckScreen() {
             item {
                 Text(
                     "Does this device still trust the compromised intermediates?",
-                    style = MaterialTheme.typography.titleLarge,
+                    style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(Modifier.size(4.dp))
@@ -214,16 +211,6 @@ fun CertificateCheckScreen() {
 private fun linkStyles() = TextLinkStyles(
     style = SpanStyle(color = MaterialTheme.colorScheme.primary, textDecoration = TextDecoration.Underline)
 )
-
-@Composable
-private fun CveLink() {
-    Text(
-        buildAnnotatedString {
-            withLink(LinkAnnotation.Url(CVE_URL, linkStyles())) { append(CVE_ID) }
-        },
-        style = MaterialTheme.typography.labelLarge
-    )
-}
 
 private fun summary(results: List<ProbeResult>): String {
     val insecure = results.count { it is ProbeResult.Insecure }
