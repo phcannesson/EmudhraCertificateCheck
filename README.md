@@ -7,6 +7,6 @@ It doesn't have Certificate Transparency enabled, which means the app checks onl
 
 # Installation
 
-An APK is available with the [1.0 release](https://github.com/phcannesson/EmudhraCertificateCheck/releases/tag/1.0).
+An APK is available directly with the [1.1 release](https://github.com/phcannesson/EmudhraCertificateCheck/releases/tag/1.1).
 
 Or you can simply build the project yourself.
